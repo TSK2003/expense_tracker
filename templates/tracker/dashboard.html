@@ -1,0 +1,41 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+<h2 class="mb-4 fw-semibold">Dashboard</h2>
+
+<div class="row g-3">
+  <div class="col-md-3 col-sm-6">
+    <div class="card card-stat text-center p-3 shadow-sm">
+      <small class="text-muted text-uppercase">Total Students</small>
+      <h2 class="mt-2 mb-0">{{ total_students }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <div class="card card-stat text-center p-3 shadow-sm">
+      <small class="text-muted text-uppercase">Attendance Records</small>
+      <h2 class="mt-2 mb-0">{{ total_attendance }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <div class="card card-stat text-center p-3 shadow-sm">
+      <small class="text-muted text-uppercase">Present</small>
+      <h2 class="mt-2 mb-0 text-success">{{ total_present }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <div class="card card-stat text-center p-3 shadow-sm">
+      <small class="text-muted text-uppercase">Absent</small>
+      <h2 class="mt-2 mb-0 text-danger">{{ total_absent }}</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3 mt-3">
+  <div class="col-md-4 col-sm-6">
+    <div class="card card-stat text-center p-3 shadow-sm bg-light">
+      <small class="text-muted text-uppercase">Total Expense</small>
+      <h2 class="mt-2 mb-0">₹{{ total_expense }}</h2>
+    </div>
+  </div>
+</div>
+{% endblock %}
