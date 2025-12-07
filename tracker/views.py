@@ -20,6 +20,29 @@ def staff_required(view_func):
     return user_passes_test(lambda u: u.is_staff)(view_func)
 
 
+
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login as auth_login
+# (these imports may already be there, keep only one copy)
+
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # Option A: auto-login after register
+            # auth_login(request, user)
+            # return redirect("tracker:dashboard")
+
+            # Option B: go to login page after register
+            return redirect("login")
+    else:
+        form = UserCreationForm()
+
+    return render(request, "registration/register.html", {"form": form})
+
+
 @login_required
 def dashboard(request):
     total_students = Student.objects.count()

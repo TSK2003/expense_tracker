@@ -23,3 +23,15 @@ urlpatterns = [
     path('', include('tracker.urls')),         
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+from django.contrib import admin
+from django.urls import path, include
+from tracker import views as tracker_views
+
+urlpatterns = [
+    path("super-admin/", admin.site.urls),
+    path("", include("tracker.urls")),
+
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/register/", tracker_views.register, name="register"),
+]
