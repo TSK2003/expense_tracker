@@ -12,12 +12,13 @@ from datetime import date, timedelta, datetime
 
 from datetime import date, timedelta
 from django.utils import timezone
-from django.db.models import Sum
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 
-from .models import Student, Attendance, Expense
-from .forms import StudentForm, AttendanceForm, ExpenseForm
+
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+def staff_required(view_func):
+    return user_passes_test(lambda u: u.is_staff)(view_func)
+
 
 @login_required
 def dashboard(request):
